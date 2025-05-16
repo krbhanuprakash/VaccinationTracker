@@ -74,3 +74,10 @@ AI tools were instrumental in the development process by:
 - Providing suggestions for optimizing code structure and improving readability.
 - Automating repetitive tasks, such as creating migrations and setting up role-based access control.
 - Offering insights and recommendations for implementing best practices in ASP.NET Core development.
+
+## Git Repository
+This project is hosted on GitHub. You can find the repository at the following link:
+
+[GitHub Repository](https://github.com/krbhanuprakash/VaccinationTracker)
+
+Feel free to clone the repository, explore the code, and contribute to the project.
