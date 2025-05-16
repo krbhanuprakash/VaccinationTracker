@@ -1,0 +1,53 @@
+﻿@model VaccinationTracker.Models.VaccinationSchedule
+
+@{
+    ViewData["Title"] = "Edit";
+    var isAdmin = User.IsInRole("Admin");
+}
+
+<h4>Edit Vaccination Schedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">User</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users" disabled="@(!isAdmin)"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VaccineId" class="control-label">Vaccine</label>
+                <select asp-for="VaccineId" class="form-control" asp-items="ViewBag.Vaccines" disabled="@(!isAdmin)"></select>
+                <span asp-validation-for="VaccineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduledDate" class="control-label"></label>
+                <input asp-for="ScheduledDate" class="form-control" />
+                <span asp-validation-for="ScheduledDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">Status</label>
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.Statuses"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CertificateUrl" class="control-label"></label>
+                <input asp-for="CertificateUrl" class="form-control" />
+                <span asp-validation-for="CertificateUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

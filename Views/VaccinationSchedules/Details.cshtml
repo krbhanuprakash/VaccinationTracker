@@ -1,0 +1,46 @@
+﻿@model VaccinationTracker.Models.VaccinationSchedule
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4>Details of Vaccination Schedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            User Email
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.User.Email
+        </dd>
+        <dt class = "col-sm-2">
+            Vaccine Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Vaccine.Name
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduledDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ScheduledDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CertificateUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CertificateUrl)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

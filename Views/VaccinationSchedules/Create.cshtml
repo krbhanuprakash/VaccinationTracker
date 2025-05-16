@@ -1,0 +1,88 @@
+﻿@model VaccinationTracker.Models.VaccinationSchedule
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Create Vaccination Schedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="userId">User</label>
+                <select class="form-control" id="userId" name="UserId" required>
+                    <option value="">Select a user</option>
+                    @if (ViewBag.Users != null && ViewBag.Users.Count > 0)
+                    {
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Id">@user.Email</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="">No users available</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vaccineId">Vaccine</label>
+                <select class="form-control" id="vaccineId" name="VaccineId" required>
+                    <option value="">Select a vaccine</option>
+                    @foreach (var vaccine in ViewBag.Vaccines)
+                    {
+                        <option value="@vaccine.Id">@vaccine.Name</option>
+                    }
+                </select>
+            </div>
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="VaccineId" />
+            <input type="hidden" id="User" asp-for="User" />
+            <input type="hidden" id="Vaccine" asp-for="Vaccine" />
+            <div class="form-group">
+                <label asp-for="ScheduledDate" class="control-label"></label>
+                <input asp-for="ScheduledDate" class="form-control" />
+                <span asp-validation-for="ScheduledDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Status">Status</label>
+                <select class="form-control" id="Status" name="Status" required>
+                    <option value="Pending">Pending</option>
+                    <option value="Active">Active</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CertificateUrl" class="control-label"></label>
+                <input asp-for="CertificateUrl" class="form-control" />
+                <span asp-validation-for="CertificateUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('userId').addEventListener('change', function() {
+            document.getElementById('SelectedUserId').value = this.value;
+            const selectedUser = this.options[this.selectedIndex];
+            document.getElementById('User').value = selectedUser.text;
+        });
+
+        document.getElementById('vaccineId').addEventListener('change', function() {
+            document.getElementById('SelectedVaccineId').value = this.value;
+            const selectedVaccine = this.options[this.selectedIndex];
+            document.getElementById('Vaccine').value = selectedVaccine.text;
+        });
+    </script>
+}
