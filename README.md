@@ -47,6 +47,30 @@ Vaccination Tracker is a web application designed to manage vaccination schedule
    ```
 6. Open the application in your browser at `http://localhost:5000`.
 
+## Deployment Instructions
+
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd VaccinationTracker
+   ```
+
+2. **Update Connection String**
+   - Open `appsettings.json`.
+   - Update the `ConnectionStrings` section with your database connection details.
+
+3. **Default Admin Login**
+   - **Username:** `Admin@VT.com`
+   - **Password:** `Test123$`
+
+4. **Login as Admin and Setup Users**
+   - Use the default admin credentials to log in.
+   - Navigate to the "Manage Users" section to add new users.
+
+5. **Add Vaccines and Schedule Vaccines**
+   - Navigate to the "Manage Vaccines" section to add vaccine details.
+   - Use the "Manage Schedule" section to schedule vaccines for the newly added users.
+
 ## Contribution Guidelines
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix:
@@ -74,10 +98,5 @@ AI tools were instrumental in the development process by:
 - Providing suggestions for optimizing code structure and improving readability.
 - Automating repetitive tasks, such as creating migrations and setting up role-based access control.
 - Offering insights and recommendations for implementing best practices in ASP.NET Core development.
-
-## Git Repository
-This project is hosted on GitHub. You can find the repository at the following link:
-
-[GitHub Repository](https://github.com/krbhanuprakash/VaccinationTracker)
-
-Feel free to clone the repository, explore the code, and contribute to the project.
+- Enhancing UI design by generating CSS styles and ensuring a consistent and modern look.
+- Streamlining the integration of UI components with backend controllers for seamless functionality.
